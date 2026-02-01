@@ -21,7 +21,6 @@
       overflow: hidden;
     }
 
-    /* Floating hearts */
     .heart {
       position: absolute;
       bottom: -20px;
@@ -31,17 +30,9 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.8);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-110vh) scale(1.3);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(0.8); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
     }
 
     .card {
@@ -56,14 +47,8 @@
     }
 
     @keyframes popIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     h1 {
@@ -101,9 +86,7 @@
       box-shadow: 0 0 25px #ff3d7f;
     }
 
-    .yes:hover {
-      transform: scale(1.15);
-    }
+    .yes:hover { transform: scale(1.15); }
 
     .no {
       background: #5a5a5a;
@@ -111,11 +94,10 @@
       position: relative;
     }
 
-    /* Secret message popup */
     .secret {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.6);
       display: none;
       align-items: center;
       justify-content: center;
@@ -129,27 +111,16 @@
       text-align: center;
       max-width: 320px;
       box-shadow: 0 0 40px rgba(255, 0, 80, 0.7);
-      animation: popIn 0.8s ease;
     }
 
-    .secret-box h2 {
-      margin-top: 0;
-      color: #fff;
-    }
-
-    /* Mobile tweaks */
     @media (max-width: 480px) {
-      .card {
-        width: 90%;
-        padding: 30px 20px;
-      }
+      .card { width: 90%; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Hearts container -->
   <div id="hearts"></div>
 
   <div class="card">
@@ -157,7 +128,7 @@
     <p>Some moments deserve their own universe.</p>
     <p>I don’t believe in ordinary days anymore.</p>
     <p><strong>
-      So this isn’t just a question.  
+      So this isn’t just a question.<br>
       It’s an invitation to a memory we’ll never forget.
     </strong></p>
 
@@ -167,31 +138,26 @@
     </div>
   </div>
 
-  <!-- Secret message -->
   <div class="secret" id="secret">
     <div class="secret-box">
       <h2>💌 Secret Message</h2>
       <p>
-        Tahfeez, you already knew the answer.<br>
-        This was never about choosing…<br><br>
-        It was always **you & me** ❤️
+        Tahfeez, you already knew the answer.<br><br>
+        It was always <strong>you & me</strong> ❤️
       </p>
     </div>
   </div>
 
-  <!-- Background music -->
   <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/audio/2023/02/14/audio_6c7f1e6f5a.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/audio/2023/02/14/audio_6c7f1e6f5a.mp3">
   </audio>
 
   <script>
-    /* Yes button */
     function sayYes() {
       document.getElementById("secret").style.display = "flex";
       document.getElementById("music").play();
     }
 
-    /* No button runs away */
     const noBtn = document.getElementById("noBtn");
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
@@ -201,7 +167,6 @@
       noBtn.style.top = y + "px";
     });
 
-    /* Floating hearts generator */
     const hearts = document.getElementById("hearts");
     setInterval(() => {
       const heart = document.createElement("div");
@@ -210,10 +175,7 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = 4 + Math.random() * 4 + "s";
       hearts.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
+      setTimeout(() => heart.remove(), 8000);
     }, 400);
   </script>
 
